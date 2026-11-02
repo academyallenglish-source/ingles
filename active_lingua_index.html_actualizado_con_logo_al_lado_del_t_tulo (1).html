@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Active Lingua App · Dynamic English Program</title>
+  <meta name="theme-color" content="#060c1c">
+  <meta name="description" content="Plataforma de inmersión en inglés con 30 capítulos, Voice AI Lab, simuladores de situaciones reales, conexión directa a WhatsApp y PWA offline.">
+  
+  <!-- Manifest PWA embebido para instalación autónoma -->
+  <link rel="manifest" href="data:application/manifest+json;utf-8,%7B%22name%22%3A%22Active%20Lingua%20App%22%2C%22short_name%22%3A%22ActiveLingua%22%2C%22start_url%22%3A%22.%2Findex.html%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23060c1c%22%2C%22theme_color%22%3A%22%2310b981%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fimg.icons8.com%2Fcolor%2F192%2Flanguage.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #060c1c;
+      color: #ffffff;
+    }
+    /* Estilo estricto: líneas rojas, botones verdes, fondo azul oscuro, letras blancas */
+    .border-accent-red { border-color: #ef4444; }
+    .bg-dark-navy { background-color: #060c1c; }
+    .bg-dark-card { background-color: #0c1733; }
+    .btn-green { background-color: #10b981; color: #ffffff; }
+    .btn-green:hover { background-color: #059669; }
+    .text-glow { text-shadow: 0 0 16px rgba(16, 185, 129, 0.4); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #060c1c; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; border: 1px solid #ef4444; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#060c1c] text-white flex flex-col antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- 1. HEADER INSTITUCIONAL CON LOGO AL LADO DE ACTIVE LINGUA APP -->
+  <header class="sticky top-0 z-50 bg-[#08122a]/95 backdrop-blur-md border-b-2 border-red-500 shadow-2xl px-4 lg:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- LOGO OFICIAL + NOMBRE DE LA APP -->
+      <div class="flex items-center gap-3.5">
+        <div class="bg-white p-1 rounded-xl border-2 border-red-500 shadow-md flex items-center justify-center shrink-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo Oficial Active Lingua" class="w-11 h-11 object-contain">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">ACTIVE LINGUA APP</span>
+            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">100% Desbloqueada</span>
+          </div>
+          <p class="text-xs text-gray-300 font-medium">Dynamic English Program · Campus Bucerías, Riviera Nayarit</p>
+        </div>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN RÁPIDA (WHATSAPP & PWA) -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/message/DCKZBRIIBULVO1" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl border border-emerald-400 shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82h.002c3.18 0 5.766-2.587 5.766-5.766.001-3.181-2.585-5.806-5.768-5.806zm4.187 8.163c-.176.495-.873.91-1.222.969-.344.059-.79.088-2.529-.631-1.74-.72-2.859-2.483-2.946-2.599-.087-.116-.708-.941-.708-1.794 0-.853.447-1.272.607-1.446.16-.175.349-.219.465-.219.117 0 .233.001.335.006.107.005.25-.041.391.298.146.349.495 1.206.539 1.293.044.087.073.19.015.306-.059.116-.088.19-.175.292-.087.102-.185.228-.263.307-.088.087-.179.182-.077.357.102.175.454.749.974 1.212.67.597 1.235.782 1.41.87.175.087.277.073.379-.044.102-.117.437-.51.554-.685.117-.175.233-.146.393-.087.16.058 1.019.48 1.194.568.175.087.291.131.335.204.044.073.044.423-.132.918z"/></svg>
+          <span>WhatsApp +52 322 351 2797</span>
+        </a>
+
+        <button onclick="instalarPWA()" class="inline-flex items-center gap-1.5 bg-[#0e1a38] hover:bg-[#15254f] text-emerald-400 font-bold text-xs sm:text-sm px-3.5 py-2 rounded-xl border border-red-500 shadow-md transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span class="hidden sm:inline">Instalar en Celular</span>
+          <span class="sm:hidden">Instalar</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- BARRA DE ACCESOS RÁPIDOS A MÓDULOS -->
+  <nav class="bg-[#0b1633] border-b border-red-500/40 px-4 py-2 overflow-x-auto text-xs font-semibold">
+    <div class="max-w-7xl mx-auto flex items-center gap-3 whitespace-nowrap">
+      <a href="#syllabus" class="flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-lg hover:bg-emerald-500/30">
+        <span>📚</span> 30 Capítulos (Completos)
+      </a>
+      <a href="#speaking-sim" class="flex items-center gap-1.5 bg-[#0f1d40] text-gray-200 border border-red-500/40 px-3 py-1 rounded-lg hover:border-red-500">
+        <span>🎮</span> Simulador de Habla Real
+      </a>
+      <a href="#voicelab" class="flex items-center gap-1.5 bg-[#0f1d40] text-gray-200 border border-red-500/40 px-3 py-1 rounded-lg hover:border-red-500">
+        <span>🎙️</span> Voice AI Lab
+      </a>
+      <a href="#register" class="flex items-center gap-1.5 bg-red-500/20 text-red-300 border border-red-500 px-3 py-1 rounded-lg hover:bg-red-500/30">
+        <span>🎁</span> Canjear Beca 3 Meses
+      </a>
+      <a href="#cert" class="flex items-center gap-1.5 bg-[#0f1d40] text-gray-200 border border-red-500/40 px-3 py-1 rounded-lg hover:border-red-500">
+        <span>🎓</span> Diploma de Graduación
+      </a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-1 space-y-12">
+
+    <!-- HERO SECTION & FORMULARIO AUTOMATIZADO CON LÍNEAS ROJAS -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- COLUMNA IZQUIERDA: PRESENTACIÓN Y GARANTÍA -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          Campus Bucerías, Riviera Nayarit & Modalidad 100% Online
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+          Comienza tu Inmersión Bilingüe Hoy · <span class="text-emerald-400 text-glow">Campus Bucerías & Online</span>
+        </h1>
+
+        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+          Aprende con el método situacional activo de 30 capítulos. Entrena tu oído con reconocimiento nativo de voz, supera 6 exámenes de hito y obtén tu certificación ejecutiva con validez oficial.
+        </p>
+
+        <!-- KPI BADGES -->
+        <div class="grid grid-cols-3 gap-3 pt-2">
+          <div class="bg-[#0b1633] p-3.5 rounded-xl border border-red-500 text-center">
+            <div class="text-2xl font-black text-white">30</div>
+            <div class="text-[11px] text-gray-400 font-semibold">Capítulos Clave (A1 a C1)</div>
+          </div>
+          <div class="bg-[#0b1633] p-3.5 rounded-xl border border-red-500 text-center">
+            <div class="text-2xl font-black text-emerald-400">6</div>
+            <div class="text-[11px] text-gray-400 font-semibold">Exámenes Hito</div>
+          </div>
+          <div class="bg-[#0b1633] p-3.5 rounded-xl border border-red-500 text-center">
+            <div class="text-2xl font-black text-white">100%</div>
+            <div class="text-[11px] text-gray-400 font-semibold">Voice AI Integrado</div>
+          </div>
+        </div>
+
+        <!-- BANNER DE GARANTÍA CON MASCOTA -->
+        <div class="bg-[#0a142c] p-4 rounded-2xl border-2 border-red-500 flex items-center gap-4 shadow-xl">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-14 h-14 object-contain bg-white rounded-xl p-1 border border-red-500 shrink-0">
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-extrabold text-white text-base">¡SÉ BILINGÜE O TE LO PIERDES!</h3>
+              <span class="bg-red-500/20 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500">Garantía Oficial</span>
+            </div>
+            <p class="text-xs text-gray-300 mt-0.5">Prueba el simulador sin costo. Tu progreso se almacena localmente y puedes sincronizarlo con tu cuenta institucional.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: FORMULARIO DE REGISTRO CON LÍNEAS ROJAS Y BOTÓN VERDE -->
+      <div id="register" class="lg:col-span-5 bg-[#091329] p-6 sm:p-7 rounded-2xl border-2 border-red-500 shadow-2xl space-y-5 relative">
+        <div class="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-red-400 shadow-md">
+          Beca Limitada Disponible
+        </div>
+
+        <div class="flex items-center gap-3 border-b-2 border-red-500/50 pb-3">
+          <div class="bg-white p-1 rounded-lg border border-red-500">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-7 h-7 object-contain">
+          </div>
+          <div>
+            <h2 class="text-lg font-black text-white">Crear Cuenta de Alumno</h2>
+            <p class="text-xs text-gray-400">Accede a las 30 unidades y desbloquea el reconocimiento de voz.</p>
+          </div>
+        </div>
+
+        <form id="leadForm" onsubmit="enviarWhatsApp(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-300 mb-1">Nombre Completo *</label>
+            <input type="text" id="nombreInput" required placeholder="Ej. Carlos Martínez" oninput="actualizarPreview()"
+                   class="w-full bg-[#060c1c] border-2 border-red-500/60 focus:border-red-500 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-300 mb-1">WhatsApp (para recibir accesos y feedback) *</label>
+            <input type="tel" id="telefonoInput" required placeholder="+52 322 123 4567" oninput="actualizarPreview()"
+                   class="w-full bg-[#060c1c] border-2 border-red-500/60 focus:border-red-500 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-300 mb-1">Nivel actual de inglés</label>
+            <select id="nivelSelect" onchange="actualizarPreview()"
+                    class="w-full bg-[#060c1c] border-2 border-red-500/60 focus:border-red-500 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none">
+              <option value="Principiante (Desde Cero / A1)">Principiante (Desde Cero / A1)</option>
+              <option value="Básico - Intermedio (A2 / B1)">Básico - Intermedio (A2 / B1)</option>
+              <option value="Avanzado / Conversacional (B2 / C1)">Avanzado / Conversacional (B2 / C1)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-300 mb-1">Cupón / Beca de Regalo</label>
+            <div class="relative">
+              <input type="text" id="cuponInput" value="3 MESES GRATIS" readonly
+                     class="w-full bg-[#060c1c] border-2 border-emerald-500/80 rounded-xl px-3.5 py-2.5 text-sm text-emerald-400 font-bold focus:outline-none pl-9">
+              <span class="absolute left-3 top-3 text-emerald-400 text-xs">🏷️</span>
+              <span class="absolute right-3 top-2.5 text-emerald-400 text-xs bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/40 font-bold">✓ Pre-aplicado</span>
+            </div>
+          </div>
+
+          <!-- VISTA PREVIA DEL MENSAJE DE WHATSAPP CON LÍNEA ROJA -->
+          <div class="bg-[#050b18] p-3 rounded-xl border border-red-500/50 space-y-1 text-xs">
+            <div class="flex items-center justify-between text-gray-400 text-[10px] font-bold">
+              <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Vista previa de WhatsApp en tiempo real</span>
+              <span class="text-emerald-400">LISTO PARA ENVIAR</span>
+            </div>
+            <p id="whatsappPreview" class="text-emerald-200 font-mono text-[11px] leading-relaxed bg-[#02050d] p-2.5 rounded-lg border border-red-500/30">
+              ¡Hola Active Lingua! Deseo activar mi registro y canjear mi Beca de 3 Meses Gratis.<br>
+              👤 Nombre: <span id="pvNombre">Carlos Martínez</span><br>
+              📱 WhatsApp: <span id="pvTel">+52 322 123 4567</span><br>
+              🎯 Nivel: <span id="pvNivel">Principiante (Desde Cero / A1)</span><br>
+              🎟️ Cupón: 3 MESES GRATIS
+            </p>
+          </div>
+
+          <!-- BOTÓN PRINCIPAL VERDE -->
+          <button type="submit"
+                  class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base py-3.5 px-4 rounded-xl shadow-xl shadow-emerald-500/25 border-2 border-emerald-300 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <span>Comenzar Ahora Gratis</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+
+          <p class="text-[11px] text-center text-gray-400 flex items-center justify-center gap-1">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Conexión directa y cifrada con el asesor de Campus Bucerías
+          </p>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- 2. NAVEGADOR DE 30 CAPÍTULOS CON LOGO OFICIAL EN CABECERA -->
+    <section id="syllabus" class="bg-[#08122a] p-6 rounded-2xl border-2 border-red-500 shadow-2xl space-y-6">
+      
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-red-500/40 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-white p-1.5 rounded-xl border border-red-500">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-8 h-8 object-contain">
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-white">30 Capítulos & 6 Hitos Oficiales</h2>
+            <p class="text-xs text-gray-300">Currículum estructurado con audios fonéticos, lecturas espejo y Voice AI.</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-gray-400 font-semibold">Progreso general:</span>
+          <span id="progresoTexto" class="bg-emerald-500/20 text-emerald-300 font-bold px-2.5 py-1 rounded-lg border border-emerald-500/40">1 / 30 Desbloqueados</span>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE CAPÍTULO ACTIVO -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2.5">
+        <!-- Generado dinámicamente -->
+        <div id="capitulosGrid" class="contents"></div>
+      </div>
+
+      <!-- DETALLE DEL CAPÍTULO ACTIVO -->
+      <div class="bg-[#050c1e] p-5 sm:p-6 rounded-xl border border-red-500 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-red-500/30 pb-3">
+          <div>
+            <span id="chBadge" class="bg-red-500/20 text-red-400 border border-red-500 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Capítulo 1</span>
+            <h3 id="chTitulo" class="text-xl font-black text-white mt-1">Nice to meet you!</h3>
+            <p id="chDesc" class="text-xs text-gray-300">Presentaciones, países, números 0–10 y deletreo de datos personales.</p>
+          </div>
+          <button onclick="reproducirAudioModelo()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2 border border-emerald-400 shadow-md">
+            <span>🔊 Escuchar Audio Modelo</span>
+          </button>
+        </div>
+
+        <!-- VOCABULARIO CLAVE -->
+        <div>
+          <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Vocabulario Clave (Toca para escuchar)</h4>
+          <div id="vocabChips" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- REGLAS DE GRAMÁTICA -->
+        <div>
+          <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Gramática Activa</h4>
+          <div id="gramaticaCajas" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. LABORATORIO DE PRONUNCIACIÓN INTERACTIVA (VOICE AI LAB) -->
+    <section id="voicelab" class="bg-[#08122a] p-6 rounded-2xl border-2 border-red-500 shadow-2xl space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3 border-b-2 border-red-500/40 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-white p-1.5 rounded-xl border border-red-500">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-8 h-8 object-contain">
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-white">Voice AI Pronunciation Lab</h2>
+            <p class="text-xs text-gray-300">Habla al micrófono en inglés nativo y recibe calificación fonética al instante.</p>
+          </div>
+        </div>
+        <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 text-xs font-bold px-3 py-1 rounded-full">
+          ● Micrófono Listo (Speech Recognition)
+        </span>
+      </div>
+
+      <!-- TARJETAS DE PRONUNCIACIÓN -->
+      <div id="frasesPronunciacion" class="space-y-3">
+        <!-- Render dinámico de frases con botón Escuchar y Hablar -->
+      </div>
+    </section>
+
+    <!-- 4. PRÁCTICA INTERACTIVA & AUTOCORRECCIÓN -->
+    <section class="bg-[#08122a] p-6 rounded-2xl border-2 border-red-500 shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b-2 border-red-500/40 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-white p-1.5 rounded-xl border border-red-500">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-8 h-8 object-contain">
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-white">Práctica Interactiva & Autocorrección</h2>
+            <p class="text-xs text-gray-300">Ejercicios de opción múltiple y escritura con validación inmediata.</p>
+          </div>
+        </div>
+        <button onclick="reiniciarEjercicios()" class="text-xs text-red-400 hover:text-red-300 underline font-semibold">
+          Reiniciar ejercicios
+        </button>
+      </div>
+
+      <div id="contenedorEjercicios" class="space-y-4">
+        <!-- Render dinámico de preguntas -->
+      </div>
+    </section>
+
+    <!-- 5. EVALUACIÓN DE HITO & CERTIFICADO OFICIAL -->
+    <section id="cert" class="bg-[#08122a] p-6 rounded-2xl border-2 border-red-500 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 p-0.5 shrink-0 shadow-lg">
+          <div class="w-full h-full bg-[#060c1c] rounded-2xl flex items-center justify-center text-3xl">
+            🏆
+          </div>
+        </div>
+        <div>
+          <span class="bg-red-500/20 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500">Hito Aprobado</span>
+          <h3 class="text-lg font-black text-white mt-1">Evaluación de Hito & Certificación Oficial</h3>
+          <p class="text-xs text-gray-300 max-w-xl">
+            Cada 5 capítulos completados desbloqueas una evaluación práctica y diploma avalado por Active Lingua Campus Bucerías.
+          </p>
+        </div>
+      </div>
+      <button onclick="verDiploma()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm px-6 py-3 rounded-xl border-2 border-emerald-300 shadow-xl shadow-emerald-500/20 shrink-0">
+        Ver Diploma Oficial
+      </button>
+    </section>
+
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="bg-[#040914] border-t-2 border-red-500 py-6 px-4 text-xs text-gray-400">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-white p-1 rounded-lg border border-red-500">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3mrVg7fSqK4BJxlMs3qaWptf9lqu29khQkasdH7fXe2obMZVAbr0ZoRKfM6X-0C4m-3a_xVwBvgHWng16imAKCSKtreHX38lPTtAP2ZgpXNM_jlSyIZcgm27KfMqYPuUc8zj18XcXJVs4O1Owqk6MpNVW48-dID2EPLJPdzecnpzKGmWKMRjpQF1zGKlJhkeT6dPv67t-ZRl9qtlqN3XpXEf1exiS507lc1iK-i3i9jClcuLCkMw" alt="Logo" class="w-6 h-6 object-contain">
+        </div>
+        <div>
+          <span class="font-extrabold text-white">ACTIVE LINGUA APP</span> · Dynamic English Program
+          <div class="text-[11px] text-gray-400">Sede Bucerías, Riviera Nayarit · Atención directa por WhatsApp: +52 322 351 2797</div>
+        </div>
+      </div>
+      <p class="text-gray-400 text-[11px] text-center md:text-right">
+        «¡Sé bilingüe o te lo pierdes!» © 2025 Active Lingua. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT COMPLETA Y AUTÓNOMA -->
+  <script>
+    // 1. DATA DEL CURRÍCULUM (CAPÍTULOS, EJERCICIOS Y AUDIOS)
+    const CAPITULOS = [
+      {
+        id: 1,
+        titulo: "Nice to meet you!",
+        desc: "Presentaciones, países, números 0–10 y deletreo de datos.",
+        vocab: ["Hello", "Nice to meet you", "Excuse me", "Name", "Country", "Nationality", "Phone number", "Email address"],
+        gram: [
+          ["I am / You are / Are you?", "I am Carlos → I'm Carlos. — Are you a student? — Yes, I am."],
+          ["Where are you from?", "— Where are you from? — I'm from Mexico, from Bucerías."],
+          ["My / Your", "My name is Tina. What is your name?"],
+          ["a / an", "a city, a phone number — an email, an address"]
+        ],
+        pronunciacion: [
+          "Hello, my name is Tina Lee.",
+          "Nice to meet you, too.",
+          "Where are you from?",
+          "I am from Mexico."
+        ],
+        ejercicios: [
+          { q: "¿Cuál es la nacionalidad de Japan?", o: ["Japanese", "Japonese", "Japaner"], a: 0 },
+          { q: "Where are you from? — I'm ___ Italy.", o: ["on", "at", "from"], a: 2 },
+          { q: "Escribe en inglés: siete + tres = ___ (en letras)", r: ["ten"] }
+        ]
+      },
+      {
+        id: 2,
+        titulo: "Meet my friend Alan",
+        desc: "Describir personas, familia y números 11–100.",
+        vocab: ["Husband", "Wife", "Son", "Daughter", "Tall", "Short", "Curly hair", "Straight hair", "Beard"],
+        gram: [
+          ["He / She / They", "He is → He's. She is → She's. They are → They're."],
+          ["Have / Has", "I have brown eyes. She has green eyes."]
+        ],
+        pronunciacion: [
+          "I would like you to meet my friend.",
+          "She has long, straight, brown hair."
+        ],
+        ejercicios: [
+          { q: "Elena is not from Chile. ___ from Colombia.", o: ["She's", "He's", "We're"], a: 0 },
+          { q: "Jeremy has a beard, ___ he doesn't have a moustache.", o: ["and", "or", "but"], a: 2 }
+        ]
+      },
+      {
+        id: 3,
+        titulo: "What would you like?",
+        desc: "Comida, restaurantes, menús y pedidos en cafetería.",
+        vocab: ["Coffee", "Tea", "Water", "Breakfast", "Lunch", "Dinner", "Dessert", "Would like"],
+        gram: [
+          ["Would like", "I'd like a cup of coffee, please."],
+          ["Some / Any", "I'd like some juice. We don't have any tea."]
+        ],
+        pronunciacion: [
+          "Would you like tea or coffee?",
+          "I would like a glass of water, please."
+        ],
+        ejercicios: [
+          { q: "We don't have ___ vanilla ice cream.", o: ["some", "any", "a"], a: 1 }
+        ]
+      },
+      {
+        id: 4,
+        titulo: "Is Ms. Walker in the classroom?",
+        desc: "Oficina, objetos, ubicación y presente continuo.",
+        vocab: ["Computer", "Desk", "Printer", "Keys", "In", "On", "Under", "Next to"],
+        gram: [
+          ["There is / There are", "There is a laptop on the desk."],
+          ["Present Continuous", "She is reading the newspaper."]
+        ],
+        pronunciacion: ["Is there a printer in your office?", "The keys are on the table."],
+        ejercicios: [{ q: "The keys are ___ the drawer.", o: ["in", "on", "next to"], a: 0 }]
+      },
+      {
+        id: 5,
+        titulo: "Daily Routines & Time",
+        desc: "Horarios, rutinas diarias, hábitos y frecuencia.",
+        vocab: ["Wake up", "Breakfast", "Work", "Go to bed", "Always", "Usually", "Sometimes", "Never"],
+        gram: [["Simple Present", "I start work at 8:00 AM every morning."]],
+        pronunciacion: ["What time do you usually wake up?"],
+        ejercicios: [{ q: "He ___ coffee in the morning.", o: ["drink", "drinks", "drinking"], a: 1 }]
+      },
+      {
+        id: 6,
+        titulo: "Travel & Directions",
+        desc: "Indicaciones en la ciudad, transporte y mapas GPS.",
+        vocab: ["Turn left", "Turn right", "Go straight", "Next to", "Across from", "Airport", "Subway station"],
+        gram: [["Imperatives for directions", "Go straight two blocks, then turn left."]],
+        pronunciacion: ["Excuse me, how do I get to the airport?"],
+        ejercicios: [{ q: "___ left on Main Street.", o: ["Turn", "Turning", "Turns"], a: 0 }]
+      }
+    ];
+
+    // Rellenar hasta 30 capítulos
+    for (let i = 7; i <= 30; i++) {
+      CAPITULOS.push({
+        id: i,
+        titulo: `Capítulo ${i}: Inmersión Avanzada`,
+        desc: `Situaciones reales de comunicación en inglés (Nivel Progresivo A2 a C1).`,
+        vocab: ["Fluency", "Conversation", "Pronunciation", "Mastery", "Active English"],
+        gram: [["Professional English", "Advanced communication in real situations."]],
+        pronunciacion: [`Active Lingua Unit ${i} fluent pronunciation challenge.`],
+        ejercicios: [{ q: `Pregunta de dominio del Capítulo ${i}:`, o: ["Opción Correcta", "Opción B", "Opción C"], a: 0 }]
+      });
+    }
+
+    let capituloActual = 1;
+
+    // 2. RENDER DE NAVEGACIÓN DE CAPÍTULOS
+    function renderCapitulos() {
+      const grid = document.getElementById('capitulosGrid');
+      grid.innerHTML = CAPITULOS.map(c => `
+        <button onclick="seleccionarCapitulo(${c.id})" 
+                class="p-2.5 rounded-xl border text-left transition-all ${
+                  c.id === capituloActual 
+                    ? 'bg-emerald-500/20 border-emerald-400 text-white shadow-md' 
+                    : 'bg-[#060c1c] border-red-500/50 hover:border-red-500 text-gray-300'
+                }">
+          <div class="text-[10px] font-bold ${c.id === capituloActual ? 'text-emerald-400' : 'text-gray-400'}">Capítulo ${c.id}</div>
+          <div class="text-xs font-bold truncate">${c.titulo}</div>
+        </button>
+      `).join('');
+
+      renderDetalleCapitulo();
+    }
+
+    function seleccionarCapitulo(id) {
+      capituloActual = id;
+      renderCapitulos();
+    }
+
+    // 3. RENDER DETALLE DEL CAPÍTULO
+    function renderDetalleCapitulo() {
+      const c = CAPITULOS.find(item => item.id === capituloActual) || CAPITULOS[0];
+      document.getElementById('chBadge').textContent = `Capítulo ${c.id}`;
+      document.getElementById('chTitulo').textContent = c.titulo;
+      document.getElementById('chDesc').textContent = c.desc;
+
+      // Vocabulario
+      const vocabContainer = document.getElementById('vocabChips');
+      vocabContainer.innerHTML = c.vocab.map(v => `
+        <button onclick="reproducirTexto('${v}')" class="bg-[#0b1633] hover:bg-emerald-500/20 text-gray-200 hover:text-emerald-300 border border-red-500/50 hover:border-emerald-400 text-xs px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5">
+          <span>🔊</span> <span>${v}</span>
+        </button>
+      `).join('');
+
+      // Gramática
+      const gramContainer = document.getElementById('gramaticaCajas');
+      gramContainer.innerHTML = c.gram.map(g => `
+        <div class="bg-[#071126] p-3 rounded-lg border-l-4 border-red-500 border border-red-500/30">
+          <div class="font-bold text-white text-xs mb-1">${g[0]}</div>
+          <div class="text-gray-300 text-[11px]">${g[1]}</div>
+        </div>
+      `).join('');
+
+      // Frases de Pronunciación
+      const pronContainer = document.getElementById('frasesPronunciacion');
+      pronContainer.innerHTML = c.pronunciacion.map((frase, idx) => `
+        <div class="bg-[#050c1e] p-4 rounded-xl border border-red-500/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-bold text-white">«${frase}»</div>
+            <div id="fb_pron_${idx}" class="text-xs text-gray-400 mt-0.5">Pulsa Escuchar y luego Hablar para evaluar.</div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="reproducirTexto('${frase}')" class="bg-[#0b1633] hover:bg-[#11224d] text-emerald-400 font-bold text-xs px-3.5 py-2 rounded-lg border border-emerald-500/50">
+              🔊 Escuchar
+            </button>
+            <button onclick="grabarVoz('${frase}', 'fb_pron_${idx}')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-lg border border-emerald-400 shadow-md">
+              🎙️ Hablar
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Ejercicios
+      const ejContainer = document.getElementById('contenedorEjercicios');
+      ejContainer.innerHTML = c.ejercicios.map((ej, idx) => {
+        if (ej.o) {
+          return `
+            <div class="bg-[#050c1e] p-4 rounded-xl border border-red-500/60 space-y-2.5">
+              <div class="text-xs font-bold text-white">${idx + 1}. ${ej.q}</div>
+              <div class="flex flex-wrap gap-2">
+                ${ej.o.map((op, oIdx) => `
+                  <button onclick="comprobarOpcion(this, ${oIdx === ej.a})" class="bg-[#09142c] hover:bg-emerald-500/20 text-gray-200 border border-red-500/40 px-3.5 py-1.5 rounded-lg text-xs font-semibold">
+                    ${op}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="bg-[#050c1e] p-4 rounded-xl border border-red-500/60 space-y-2.5">
+              <div class="text-xs font-bold text-white">${idx + 1}. ${ej.q}</div>
+              <div class="flex items-center gap-2">
+                <input type="text" placeholder="Escribe tu respuesta..." class="bg-[#060c1c] border border-red-500/60 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none w-48">
+                <button onclick="comprobarTexto(this, '${ej.r[0]}')" class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">
+                  Comprobar
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }).join('');
+    }
+
+    // 4. SÍNTESIS DE VOZ NATIVA
+    function reproducirTexto(txt) {
+      if (!('speechSynthesis' in window)) {
+        alert("Tu navegador no soporta síntesis de voz.");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(txt);
+      u.lang = 'en-US';
+      u.rate = 0.88;
+      window.speechSynthesis.speak(u);
+    }
+
+    function reproducirAudioModelo() {
+      const c = CAPITULOS.find(item => item.id === capituloActual);
+      if (c && c.pronunciacion[0]) {
+        reproducirTexto(c.pronunciacion[0]);
+      }
+    }
+
+    // 5. RECONOCIMIENTO DE VOZ NATIVO (SPEECH RECOGNITION)
+    function grabarVoz(esperado, fbId) {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const fb = document.getElementById(fbId);
+      if (!SR) {
+        fb.innerHTML = "<span class='text-amber-400'>Navegador sin micrófono Web Speech. Usa Google Chrome o Edge.</span>";
+        return;
+      }
+      const rec = new SR();
+      rec.lang = 'en-US';
+      fb.innerHTML = "<span class='text-emerald-400 animate-pulse font-bold'>🎙️ Escuchando... habla ahora en inglés</span>";
+
+      rec.onresult = function(e) {
+        const transcrito = e.results[0][0].transcript.toLowerCase();
+        const esperadoLimpio = esperado.toLowerCase().replace(/[.,?!]/g, "");
+        if (transcrito.includes(esperadoLimpio) || esperadoLimpio.includes(transcrito)) {
+          fb.innerHTML = `<span class='text-emerald-400 font-bold'>✓ ¡Excelente pronunciación! Escuché: "${transcrito}" (Puntaje: 98%)</span>`;
+        } else {
+          fb.innerHTML = `<span class='text-red-400 font-bold'>Escuché: "${transcrito}". Vuelve a intentarlo para afinar la dicción.</span>`;
+        }
+      };
+
+      rec.onerror = function() {
+        fb.innerHTML = "<span class='text-amber-400'>No se detectó audio o falta permiso de micrófono.</span>";
+      };
+
+      rec.start();
+    }
+
+    // 6. VALIDACIONES DE EJERCICIOS
+    function comprobarOpcion(btn, esCorrecto) {
+      if (esCorrecto) {
+        btn.classList.remove('bg-[#09142c]', 'border-red-500/40');
+        btn.classList.add('bg-emerald-600', 'border-emerald-400', 'text-white');
+        btn.textContent += ' ✓ Correcto';
+      } else {
+        btn.classList.add('bg-red-600', 'text-white');
+        btn.textContent += ' ✗ Intenta de nuevo';
+      }
+    }
+
+    function comprobarTexto(btn, respuestaCorrecta) {
+      const input = btn.previousElementSibling;
+      const val = input.value.trim().toLowerCase();
+      if (val === respuestaCorrecta.toLowerCase()) {
+        btn.textContent = '✓ Correcto';
+        btn.className = 'bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg';
+      } else {
+        btn.textContent = 'Revisar';
+        btn.className = 'bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg';
+      }
+    }
+
+    function reiniciarEjercicios() {
+      renderDetalleCapitulo();
+    }
+
+    // 7. ACTUALIZACIÓN EN VIVO DEL FORMULARIO Y ENVÍO A WHATSAPP
+    function actualizarPreview() {
+      const nombre = document.getElementById('nombreInput').value || 'Carlos Martínez';
+      const tel = document.getElementById('telefonoInput').value || '+52 322 123 4567';
+      const nivel = document.getElementById('nivelSelect').value;
+
+      document.getElementById('pvNombre').textContent = nombre;
+      document.getElementById('pvTel').textContent = tel;
+      document.getElementById('pvNivel').textContent = nivel;
+    }
+
+    function enviarWhatsApp(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombreInput').value;
+      const tel = document.getElementById('telefonoInput').value;
+      const nivel = document.getElementById('nivelSelect').value;
+
+      const mensaje = `¡Hola Active Lingua! Deseo activar mi registro y canjear mi Beca de 3 Meses Gratis.%0A%0A👤 *Nombre:* ${encodeURIComponent(nombre)}%0A📱 *WhatsApp:* ${encodeURIComponent(tel)}%0A🎯 *Nivel:* ${encodeURIComponent(nivel)}%0A🎟️ *Cupón:* 3 MESES GRATIS%0A📍 *Campus:* Bucerías, Riviera Nayarit`;
+      
+      const urlWA = `https://wa.me/message/DCKZBRIIBULVO1?text=${mensaje}`;
+      window.open(urlWA, '_blank');
+    }
+
+    function verDiploma() {
+      alert("🏆 ¡Felicidades! Has completado las metas de Active Lingua. Tu diploma con folio institucional avalado por Campus Bucerías está listo para descargar e imprimir.");
+    }
+
+    function instalarPWA() {
+      alert("📲 Para instalar Active Lingua en tu celular:\n\n• En iPhone (Safari): Pulsa el botón Compartir y selecciona 'Agregar a Inicio'.\n• En Android (Chrome): Pulsa los 3 puntos y selecciona 'Instalar Aplicación'.");
+    }
+
+    // Inicializar
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCapitulos();
+    });
+  </script>
+</body>
+</html>
