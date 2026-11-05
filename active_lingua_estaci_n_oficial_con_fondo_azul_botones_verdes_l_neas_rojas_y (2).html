@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Lingua | Netlify Drop Station &amp; Master Bundle</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #060c1c;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060c1c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ef4444;
+      border-radius: 4px;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brandDark: "#060c1c",
+            brandNavy: "#0a1128",
+            brandCard: "#0f172a",
+            brandBorderRed: "#ef4444",
+            brandBorderRedDark: "#dc2626",
+            brandEmerald: "#10b981",
+            brandEmeraldHover: "#059669",
+            brandTextLight: "#cbd5e1"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#060c1c] text-[#ffffff] font-sans min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+<!-- TOP HEADER / NAV BAR -->
+<header class="fixed top-0 w-full z-50 bg-[#0a1128]/95 backdrop-blur-md border-b-2 border-red-500 shadow-[0_4px_25px_rgba(239,68,68,0.25)]">
+<div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4">
+<!-- Brand & Official Logo -->
+<div class="flex items-center gap-3.5">
+<a class="flex items-center gap-3 group" href="#">
+<div class="p-1 rounded-xl bg-white border-2 border-red-500 shadow-md group-hover:scale-105 transition-transform shrink-0">
+<img alt="Active Lingua Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbNMtYq3YLAEIX4LJMPxhPKIwP7cSRHZoga4lGXYGPQRjff2wvsZOVsjOVniSJ5ECsEr50LpNSRh6AE7j7sjW3R6BSpCa8DqAPiCsDi9YmpqZ663ADchyxIMCBb834Y-ZEbkLgTHxgGzyk-MORfbRMjmYelLaH1GgvX8LtaAUa7Q4zpcbEn6u9_703_N6oOx_DXo0gEMun07YBgklyhdng2BnyuiN8t6cHuwR7GY547IztF79TBxYI"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white uppercase">ACTIVE LINGUA APP</span>
+<span class="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-xs font-bold shadow-sm">
+<span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Netlify Live
+              </span>
+</div>
+<span class="text-xs text-red-400 font-semibold tracking-wider uppercase">Bucerías Campus Hub • Riviera Nayarit</span>
+</div>
+</a>
+</div>
+<!-- Center Navigation Links -->
+<nav class="hidden lg:flex items-center gap-2">
+<a class="px-3.5 py-2 text-sm font-bold text-white bg-red-600/20 border border-red-500 rounded-lg hover:bg-red-600 hover:text-white transition-colors" href="#">
+          Production Hub
+        </a>
+<a class="px-3.5 py-2 text-sm font-bold text-white bg-emerald-600 border border-emerald-400 rounded-lg shadow-sm" href="#">
+          Downloads Direct
+        </a>
+<a class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:border-red-400 border border-transparent rounded-lg transition-colors" href="#">
+          Deploy Logs
+        </a>
+<a class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:border-red-400 border border-transparent rounded-lg transition-colors" href="#">
+          PWA Station
+        </a>
+</nav>
+<!-- Right Direct Contact & Mascot Quick Badge -->
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-bold text-sm border-2 border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] active:scale-95 transition-all" href="https://wa.me/523223512797" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+<span class="hidden sm:inline">+52 322 351 2797</span>
+</a>
+<div class="hidden xl:flex items-center gap-2 p-1.5 pl-2.5 rounded-xl bg-[#0a1128] border-2 border-red-500">
+<span class="text-xs font-bold text-white">v6.0 PROD</span>
+<img alt="Mascota Active Lingua" class="w-8 h-8 rounded-full object-cover bg-white p-0.5 border border-red-400" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6DIx9PUnp5cBYKQSGnTYnQhxWNHD2UqwambB_79sVSer8RIZP_4NVHvfCNia4vsXeEdx5vg5EA0dZnk5tz7lKdodTAWNmT7QdZdYSoRFx0spkaMxonvk4WWq8x1MBUPoV-UVTm68f71sJZFt3UJOPQe1zuam5y7hGT5hfi2Pz-WUTY4q2H2Gu0wTfkUUe0pT_29zaBHcbbOGe-4WEn3I5IkJRAAZzyVLP_3-oNmJT2VA0dmEFYD2R"/>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER -->
+<main class="w-full pt-20 flex-grow bg-[#060c1c]">
+<!-- HERO SECTION BANNER -->
+<section class="relative overflow-hidden bg-gradient-to-b from-[#0a1128] via-[#060c1c] to-[#0a1128] py-12 px-4 sm:px-6 lg:px-12 border-b-2 border-red-500 shadow-2xl">
+<!-- Ambient Glows -->
+<div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-red-600/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 relative z-10">
+<!-- Left Content -->
+<div class="flex flex-col gap-5 max-w-3xl">
+<!-- Institutional Badges -->
+<div class="flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 text-white font-bold text-xs tracking-wider border border-red-400 shadow-sm uppercase">
+<span class="material-symbols-outlined text-sm">verified</span>
+              PRODUCCIÓN VERIFICADA v6.0
+            </span>
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#10b981] text-white font-bold text-xs border border-emerald-400 shadow-sm uppercase">
+<span class="material-symbols-outlined text-sm">lock_open_right</span>
+              100% AUTÓNOMO Y DESBLOQUEADO
+            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#0a1128] text-slate-200 border border-red-500 font-semibold text-xs">
+              📍 Bucerías, Nayarit Hub
+            </span>
+</div>
+<!-- Hero Headline with Official Logo Card -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+<div class="p-3 bg-white rounded-2xl border-4 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)] shrink-0 flex items-center justify-center">
+<img alt="Active Lingua Official Logo" class="h-20 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZWgiGdX4JoTVa8kdAvMWL_E2XmljUMQUDQM9ioQ3AC9c0JE3FlWRAB3v7dVpGo-uSc6Ad4noTU28rf0DrK0m0DyuU_hNbpcpA5GQ2e1rKTo58mehdECQYTSGbRnOYHGx7REpDhFdAtT6hDf5ogCN-zKT0qPDyoEQCEUexHz9Kr-2GXb8LpbcNbzQEUsoRs-qV6a4Mrhk2HsEcERT7ER9571jidXNud9eATBx7EcHw-Vv6xrYhV_qc"/>
+</div>
+<div>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Exportación Maestra &amp; Netlify Drop Station
+              </h1>
+<p class="text-slate-300 font-medium text-base sm:text-lg mt-2 leading-relaxed">
+                Paquete de código autónomo compilado: Laboratorio Stitch TV, 30 Capítulos interactivos, Voice AI y Embudo WhatsApp instantáneo a <span class="text-emerald-400 font-bold">+52 322 351 2797</span>.
+              </p>
+</div>
+</div>
+</div>
+<!-- Right Quick Action Cluster -->
+<div class="w-full xl:w-auto flex flex-col sm:flex-row xl:flex-col gap-3.5 shrink-0">
+<button class="flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-extrabold text-base border-2 border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.5)] active:translate-y-0.5 transition-all" id="downloadMasterBtn">
+<span class="material-symbols-outlined text-2xl">download</span>
+<span>Descargar index.html Ahora</span>
+</button>
+<button class="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#0a1128] hover:bg-slate-800 text-white font-bold text-sm border-2 border-red-500 shadow-md transition-colors" id="copyFullBundleBtn">
+<span class="material-symbols-outlined text-xl text-red-400">content_copy</span>
+<span id="copyBtnText">Copiar Código Completo</span>
+</button>
+<a class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#060c1c] hover:bg-[#0a1128] text-white font-bold text-sm border-2 border-red-500 transition-colors" href="https://app.netlify.com/drop" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-base text-emerald-400">open_in_new</span>
+<span>Ir a Netlify Drop (app.netlify.com/drop)</span>
+</a>
+</div>
+</div>
+</section>
+<!-- FLOATING TOAST -->
+<div class="fixed top-24 right-6 z-50 transform translate-x-[450px] transition-transform duration-300 pointer-events-none" id="toastNotification">
+<div class="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-emerald-600 text-white border-2 border-emerald-400 shadow-2xl font-bold text-sm pointer-events-auto">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+<span id="toastMessage">¡Archivo index.html generado y descargado!</span>
+</div>
+</div>
+<!-- MAIN CONTAINER -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 flex flex-col gap-10">
+<!-- 3-STEP DEPLOYMENT FLOW -->
+<div class="flex flex-col gap-4">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b-2 border-red-500/50 pb-3">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Flujo de Despliegue Express</span>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white">Actualiza activelingua.netlify.app en 3 Pasos</h2>
+</div>
+<p class="text-sm font-semibold text-slate-300">Sin terminal, sin compilaciones complejas, 100% drag-and-drop.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1 -->
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-6 shadow-lg flex flex-col justify-between gap-5 relative group hover:border-emerald-400 transition-colors">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-red-600 border border-red-400 text-white font-black text-sm flex items-center justify-center shadow">01</span>
+<span class="material-symbols-outlined text-emerald-400 text-3xl">file_download</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">1. Descarga Maestra</h3>
+<p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Haz clic en el botón verde superior para descargar el archivo <strong class="text-white bg-red-950 px-1.5 py-0.5 rounded border border-red-600">index.html</strong> compilado con zero dependencies.
+              </p>
+</div>
+<div class="p-3 bg-[#060c1c] rounded-xl border border-red-500/60 text-slate-300 text-xs font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-emerald-400">task_alt</span>
+<span>Incluye PWA + Motor de voz y Stitch TV</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-6 shadow-lg flex flex-col justify-between gap-5 relative group hover:border-emerald-400 transition-colors">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-red-600 border border-red-400 text-white font-black text-sm flex items-center justify-center shadow">02</span>
+<span class="material-symbols-outlined text-yellow-400 text-3xl">drag_pan</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">2. Arrastra a Netlify Drop</h3>
+<p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Entra a <strong class="text-emerald-400">app.netlify.com/drop</strong> y arrastra el archivo directamente a la zona punteada del sitio existente.
+              </p>
+</div>
+<a class="p-3 bg-[#060c1c] rounded-xl border border-emerald-500/80 text-emerald-400 hover:text-white hover:bg-emerald-600 transition-all text-xs font-bold flex items-center justify-between" href="https://app.netlify.com/drop" rel="noopener noreferrer" target="_blank">
+<span>Abrir app.netlify.com/drop</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+<!-- Step 3 -->
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-6 shadow-lg flex flex-col justify-between gap-5 relative group hover:border-emerald-400 transition-colors">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-emerald-500 border border-emerald-400 text-white font-black text-sm flex items-center justify-center shadow">03</span>
+<span class="material-symbols-outlined text-emerald-400 text-3xl">rocket_launch</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">3. En Vivo al Instante</h3>
+<p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                La CDN global de Netlify propaga tus cambios con HTTPS activo, soporte offline para móviles y el embudo WhatsApp directo.
+              </p>
+</div>
+<div class="p-3 bg-emerald-950/60 rounded-xl border border-emerald-400 text-emerald-300 text-xs font-bold flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+<span>activelingua.netlify.app 100% activo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FEATURES 4-COL BENTO GRID -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-5 shadow flex flex-col gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-red-600/30 border border-red-500 text-red-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">tv</span>
+</div>
+<h4 class="text-lg font-bold text-white">Stitch TV Sync</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Píldoras inmersivas de 90 segundos con micro-subtítulos interactivos y Shadowing Challenge sin retrasos ni cortes.
+          </p>
+</div>
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-5 shadow flex flex-col gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-emerald-600/30 border border-emerald-500 text-emerald-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">mic</span>
+</div>
+<h4 class="text-lg font-bold text-white">Web Speech AI</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Sintetizador y reconocimiento de pronunciación 100% nativo de navegador, sin cargos mensuales de APIs externas ($0 USD).
+          </p>
+</div>
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-5 shadow flex flex-col gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-red-600/30 border border-red-500 text-red-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">chat</span>
+</div>
+<h4 class="text-lg font-bold text-white">Beca WhatsApp Direct</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Envío de solicitudes y Beca de 3 Meses 100% Gratis directo al WhatsApp oficial <span class="text-emerald-400 font-bold">+52 322 351 2797</span>.
+          </p>
+</div>
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-5 shadow flex flex-col gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-emerald-600/30 border border-emerald-500 text-emerald-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">install_mobile</span>
+</div>
+<h4 class="text-lg font-bold text-white">PWA Móvil Autónoma</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Instalable en pantalla de inicio de Android e iOS como aplicación real con Service Worker y fallback offline.
+          </p>
+</div>
+</div>
+<!-- CODE VIEWER & INTERACTIVE SANDBOX DOCK -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT: CODE VIEWER -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl overflow-hidden shadow-2xl">
+<!-- Header Bar -->
+<div class="bg-[#060c1c] border-b-2 border-red-500 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-red-500 inline-block shadow"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-400 inline-block shadow"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-500 inline-block shadow"></span>
+<span class="ml-2 text-xs font-mono font-bold text-white">index.html Master Bundle (v6.0 Prod)</span>
+</div>
+<!-- Code Tabs -->
+<div class="flex items-center gap-1.5 bg-[#0a1128] p-1 rounded-xl border border-red-500/60">
+<button class="px-3 py-1 rounded-lg text-xs font-bold bg-[#10b981] text-white shadow transition-all" id="tabIndexBtn">index.html</button>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all" id="tabManifestBtn">manifest.json</button>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all" id="tabSwBtn">sw.js</button>
+</div>
+</div>
+<!-- Filename & Quick Copy -->
+<div class="bg-[#0f172a] px-4 py-2.5 border-b border-red-500/40 flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-emerald-400">code</span>
+<span class="font-mono text-white font-semibold" id="activeFileLabel">index.html (30 Capítulos + Stitch TV + Voice AI)</span>
+</div>
+<button class="flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors" id="copySnippetBtn">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+<span>Copiar Pestaña</span>
+</button>
+</div>
+<!-- Preformatted Code Output -->
+<div class="p-4 bg-[#030712] text-emerald-300 font-mono text-xs overflow-x-auto max-h-[500px] leading-relaxed select-all">
+<pre><code class="whitespace-pre" id="codeDisplayArea"></code></pre>
+</div>
+<!-- Code Footer Status -->
+<div class="bg-[#060c1c] border-t-2 border-red-500 px-4 py-3 flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-slate-300 font-medium">Listo para descarga o copiar a Netlify</span>
+</div>
+<span class="text-red-400 font-mono font-bold">Zero npm compile</span>
+</div>
+</div>
+</div>
+<!-- RIGHT: INTERACTIVE SANDBOX & BUCERIAS MASCOT -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Sandbox Card -->
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-6 shadow-xl flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-400 text-2xl">science</span>
+<h3 class="text-xl font-bold text-white">Simulador de Laboratorio</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400 text-xs font-bold">
+                Voice AI Activo
+              </span>
+</div>
+<!-- Chapter Test Card -->
+<div class="bg-[#060c1c] border-2 border-red-500/80 rounded-xl p-4 flex flex-col gap-4">
+<div class="flex items-center justify-between text-xs">
+<span class="text-emerald-400 font-bold uppercase tracking-wider">Capítulo 01 • Bucerías Immersion</span>
+<span class="text-red-400 font-mono font-semibold">90s Drill</span>
+</div>
+<div class="p-3.5 bg-[#0a1128] rounded-xl border border-red-500/50 flex items-center justify-between gap-3 shadow-inner">
+<div>
+<h5 class="text-base font-bold text-white leading-tight">"Welcome to Bucerías, friend!"</h5>
+<p class="text-xs text-slate-300 mt-0.5">Pronunciación nativa &amp; Shadowing Challenge</p>
+</div>
+<button class="w-11 h-11 rounded-full bg-[#10b981] hover:bg-[#059669] text-white flex items-center justify-center shrink-0 border border-emerald-300 shadow-md active:scale-95 transition-transform" id="testAudioBtn" title="Escuchar pronunciación">
+<span class="material-symbols-outlined text-2xl">volume_up</span>
+</button>
+</div>
+<!-- Simulator Buttons -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-300 font-medium">Reconocimiento Voice AI:</span>
+<span class="text-emerald-400 font-bold" id="voiceStatus">Listo para escuchar</span>
+</div>
+<div class="flex gap-2.5">
+<button class="flex-1 py-3 px-4 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-extrabold text-sm border-2 border-emerald-400 flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95" id="simulateMicBtn">
+<span class="material-symbols-outlined text-lg">mic</span>
+<span id="micBtnText">Probar Micrófono</span>
+</button>
+<button class="py-3 px-4 rounded-xl bg-[#060c1c] hover:bg-[#0f172a] text-white font-bold text-xs border-2 border-red-500 flex items-center justify-center gap-1.5 transition-colors" id="simulateLeadBtn">
+<span class="material-symbols-outlined text-emerald-400 text-base">send</span>
+<span>WhatsApp Lead</span>
+</button>
+</div>
+<div class="hidden p-3 rounded-xl bg-emerald-950/80 border border-emerald-400 text-emerald-200 text-xs font-bold flex items-center gap-2 animate-fade-in" id="voiceFeedback">
+<span class="material-symbols-outlined text-base text-emerald-400">thumb_up</span>
+<span>¡Excelente entonación nativa detectada! +100 XP registrados.</span>
+</div>
+</div>
+</div>
+<!-- Zero API Metrics -->
+<div class="grid grid-cols-3 gap-2.5 text-center">
+<div class="p-3 bg-[#060c1c] border border-red-500/60 rounded-xl">
+<span class="text-2xl font-black text-white">0</span>
+<p class="text-[11px] text-slate-300 font-semibold mt-0.5">Dependencias Node</p>
+</div>
+<div class="p-3 bg-[#060c1c] border border-red-500/60 rounded-xl">
+<span class="text-2xl font-black text-emerald-400">$0.00</span>
+<p class="text-[11px] text-slate-300 font-semibold mt-0.5">Costo de APIs</p>
+</div>
+<div class="p-3 bg-[#060c1c] border border-red-500/60 rounded-xl">
+<span class="text-2xl font-black text-white">100%</span>
+<p class="text-[11px] text-slate-300 font-semibold mt-0.5">PWA Autónoma</p>
+</div>
+</div>
+<!-- WhatsApp Direct Card -->
+<div class="p-4 rounded-xl bg-[#060c1c] border-2 border-emerald-400 flex items-center justify-between gap-3 shadow-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#10b981] flex items-center justify-center text-white shrink-0 border border-emerald-300">
+<span class="material-symbols-outlined text-xl">chat</span>
+</div>
+<div>
+<p class="text-xs font-bold text-white uppercase tracking-wider">Línea Directa de Admisiones</p>
+<p class="text-sm font-black text-emerald-400">+52 322 351 2797 (HQ Bucerías)</p>
+</div>
+</div>
+<a class="px-4 py-2 rounded-lg bg-[#10b981] hover:bg-[#059669] text-white font-extrabold text-xs border border-emerald-300 transition-all shadow" href="https://wa.me/message/DCKZBRIIBULVO1" rel="noopener noreferrer" target="_blank">
+                Chat Ya
+              </a>
+</div>
+</div>
+<!-- Official Mascot & Campus Banner -->
+<div class="bg-[#0a1128] border-2 border-red-500 rounded-2xl p-5 shadow-xl flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-red-500 text-xl">location_on</span>
+<h4 class="text-base font-bold text-white">Active Lingua Campus Bucerías</h4>
+</div>
+<span class="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-500">
+                Riviera Nayarit
+              </span>
+</div>
+<!-- Visual Mascot Banner -->
+<div class="relative w-full rounded-xl overflow-hidden border-2 border-red-500 bg-[#060c1c]">
+<img alt="Active Lingua Mascota Oficial Bucerías" class="w-full h-44 object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC4cB7KFRwJTEH5Wa2QNt-LyAk44orJa2776a1poHQbVpgPuVPPRBaj3oRva0mOLx8PnRDJmvtJmtzsiKArel_YpoxanUrlAMHoteZeAGoPs0pOZP3fYAeef-L7ilnYrMRZTtZzH2-WC0_v4ADsWTzfYLcSIvwj1he8SrQO6vW3QzmSAliwy08lfKMlv3Io4JJ76VWYPjTPCTIj2ZgVvKvOr4ycy8OIzgKBCGL0IbCBUEZo7g4XS9H"/>
+<div class="absolute bottom-2 right-2 bg-[#060c1c]/90 px-3 py-1 rounded-lg border border-red-500 text-[11px] font-bold text-white">
+                ¡Sé Bilingüe o te lo pierdes!
+              </div>
+</div>
+<p class="text-xs text-slate-300 leading-relaxed font-medium">
+              Acreditación bilingüe con metodología interactiva, clases presenciales y virtuales desde Bucerías, Bahía de Banderas, Nayarit.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- INSTITUTIONAL FOOTER -->
+<footer class="w-full bg-[#0a1128] border-t-2 border-red-500 py-8 px-4 sm:px-6 lg:px-10 mt-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Brand in footer -->
+<div class="flex items-center gap-3">
+<div class="p-1 bg-white rounded-lg border-2 border-red-500 shrink-0">
+<img alt="Active Lingua" class="h-7 w-7 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbNMtYq3YLAEIX4LJMPxhPKIwP7cSRHZoga4lGXYGPQRjff2wvsZOVsjOVniSJ5ECsEr50LpNSRh6AE7j7sjW3R6BSpCa8DqAPiCsDi9YmpqZ663ADchyxIMCBb834Y-ZEbkLgTHxgGzyk-MORfbRMjmYelLaH1GgvX8LtaAUa7Q4zpcbEn6u9_703_N6oOx_DXo0gEMun07YBgklyhdng2BnyuiN8t6cHuwR7GY547IztF79TBxYI"/>
+</div>
+<div>
+<span class="text-sm font-extrabold text-white uppercase tracking-wider">ACTIVE LINGUA APP</span>
+<p class="text-xs text-slate-300 font-medium">© 2026 Bucerías, Nayarit. Netlify Direct Production &amp; Static Drop Engine.</p>
+</div>
+</div>
+<!-- Specs & Contact Badges -->
+<div class="flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-200">
+<span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#060c1c] border border-emerald-400 text-emerald-400">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> PWA Compliant
+        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#060c1c] border border-red-500 text-red-400">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> SSL Global CDN
+        </span>
+<a class="flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#10b981] text-white hover:bg-[#059669] border border-emerald-300 transition-colors" href="https://wa.me/523223512797" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-sm">call</span>
+<span>+52 322 351 2797</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- DATA TEMPLATES & DYNAMIC EXPORT LOGIC -->
+<script>
+    (function initMasterExportHub() {
+      // 1. Production Single-File index.html Bundle
+      const masterHtmlTemplate = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Lingua | Dynamic English Program Bucerías</title>
+  <meta name="description" content="Laboratorio de inglés Stitch TV, 30 capítulos interactivos, Voice AI y Beca de 3 Meses Gratis en Bucerías, Nayarit.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#060c1c">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <script src="https://cdn.tailwindcss.com"><\\/script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#060c1c',
+            brandNavy: '#0a1128',
+            brandBorderRed: '#ef4444',
+            brandEmerald: '#10b981',
+            brandEmeraldDark: '#059669'
+          }
+        }
+      }
+    };
+  <\\/script>
+</head>
+<body class="bg-[#060c1c] text-white font-['Plus_Jakarta_Sans',sans-serif]">
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-50 bg-[#0a1128] border-b-2 border-[#ef4444] text-white py-4 px-6 shadow-xl flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="p-1 rounded-xl bg-white border-2 border-[#ef4444]">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1W7bx-rn5g2hilqi7mxWysdc33BRo7eziUfF9uE8KofUuplcgZw0uc44yNuJnVUEjr7CknJCYAsu3sJrSYu6pxPpJAvvhqBu-42OAHkbb1eu_Lmphty42ZA07tYFhA_N5wLdXFxmyMgJesKzdkCinKGbaBKVxDV0VWoCJ5-K64sV_BJcTQxtmAGPqmmAaOHlzLljIOzqiu1a0OOivW-bhbB-TpK-j65803wbpXRu2lpbgQotpSLlzoyCI8" class="h-8 w-8 object-contain" alt="Logo">
+      </div>
+      <div>
+        <span class="text-xl font-extrabold tracking-tight">ACTIVE LINGUA APP</span>
+        <span class="block text-xs text-[#ef4444] font-bold">Bucerías Campus • Riviera Nayarit</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/523223512797" target="_blank" class="px-4 py-2 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-bold text-sm flex items-center gap-2 border border-emerald-300 shadow">
+        <span class="material-symbols-outlined text-base">chat</span> +52 322 351 2797
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="max-w-6xl mx-auto p-6 flex flex-col gap-10">
+    <section class="bg-[#0a1128] border-2 border-[#ef4444] rounded-2xl p-8 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="flex flex-col gap-4 max-w-xl">
+        <span class="text-xs font-bold text-[#10b981] uppercase tracking-widest">¡Sé bilingüe o te lo pierdes!</span>
+        <h1 class="text-4xl font-extrabold leading-tight text-white">Laboratorio Stitch TV &amp; 30 Capítulos Interactivos</h1>
+        <p class="text-slate-300 text-base">Entrenamiento acelerado con cápsulas de 90 segundos, subtítulos interactivos, Shadowing y Voice AI en tiempo real.</p>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a href="#lab" class="px-6 py-3 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-bold shadow border border-emerald-400">Comenzar Laboratorio</a>
+          <a href="#beca" class="px-6 py-3 rounded-xl bg-[#060c1c] border-2 border-[#ef4444] text-white font-bold hover:bg-slate-900">Reclamar Beca 3 Meses</a>
+        </div>
+      </div>
+      <div class="w-full lg:w-96 bg-[#060c1c] border-2 border-[#ef4444] p-6 rounded-2xl shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs uppercase tracking-widest text-[#10b981] font-bold">Stitch TV Clip #01</span>
+          <span class="text-xs bg-red-600 px-2 py-0.5 rounded text-white font-bold animate-pulse">EN VIVO</span>
+        </div>
+        <div class="aspect-video bg-slate-950 rounded-xl flex items-center justify-center flex-col gap-2 p-4 text-center border border-red-500/50">
+          <span class="material-symbols-outlined text-5xl text-[#10b981]">play_circle</span>
+          <p class="text-sm font-bold text-white">"Mastering Natural Conversations in Bucerías"</p>
+          <span class="text-xs text-slate-400">Duración: 90 segundos</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-300 pt-1">
+          <span>Speed: 1.0x</span>
+          <span class="text-[#10b981] font-bold">Interactive Subtitles ON</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 30 CHAPTERS MOTOR -->
+    <section id="lab" class="flex flex-col gap-6">
+      <div class="flex items-center justify-between border-b-2 border-[#ef4444] pb-2">
+        <h2 class="text-2xl font-extrabold text-white">Plan Maestro: 30 Capítulos</h2>
+        <span class="text-xs text-emerald-400 font-mono font-bold">100% Speech-Enabled</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chaptersContainer"></div>
+    </section>
+
+    <!-- WHATSAPP SCHOLARSHIP SECTION -->
+    <section id="beca" class="bg-[#0a1128] border-2 border-[#ef4444] rounded-2xl p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-lg">
+        <span class="text-xs px-3 py-1 rounded-full bg-[#10b981] text-white font-bold">BECA OFICIAL 2026</span>
+        <h3 class="text-3xl font-extrabold text-white mt-3">Beca de 3 Meses 100% Gratis</h3>
+        <p class="text-slate-300 mt-2">Inscríbete hoy mismo y asegura tu pase prioritario en Bucerías, Nayarit o en modalidad virtual.</p>
+      </div>
+      <form id="waLeadForm" class="flex flex-col gap-3 w-full md:w-80">
+        <input type="text" id="leadName" placeholder="Tu Nombre Completo" required class="p-3.5 rounded-xl bg-[#060c1c] text-white placeholder-slate-400 border border-[#ef4444] focus:outline-none focus:ring-2 focus:ring-[#10b981]">
+        <input type="tel" id="leadPhone" placeholder="Tu Teléfono / WhatsApp" required class="p-3.5 rounded-xl bg-[#060c1c] text-white placeholder-slate-400 border border-[#ef4444] focus:outline-none focus:ring-2 focus:ring-[#10b981]">
+        <button type="submit" class="p-3.5 rounded-xl bg-[#10b981] hover:bg-[#059669] text-white font-extrabold flex items-center justify-center gap-2 border border-emerald-300 shadow">
+          <span class="material-symbols-outlined text-base">send</span> Reclamar Beca por WhatsApp
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const topics = [
+      "First Greetings & Essentials", "Ordering at Bucerías Cafés", "Beach & Water Sports Vocabulary",
+      "Directions & Navigating Town", "Expressing Likes and Feelings", "Hotel Check-in & Booking",
+      "Talking About Friends & Family", "Job Interviews in Hospitality", "Past Tense Adventures",
+      "Future Plans & Vacations", "Shadowing Native Slang", "Idiomatic Fluency Drills",
+      "Storytelling Essentials", "Debating Cultural Topics", "Telephone Skills & Etiquette",
+      "Emergency & Health Vocabulary", "Shopping & Market Negotiations", "Cooking & Recipe Commands",
+      "Advanced Prepositions", "Real-World Pronunciation Shifts", "Business English Foundations",
+      "Email & Digital Messaging", "Music & Pop Culture Talk", "Story Summaries in 60s",
+      "Confidence in Group Talks", "Humor and Irony nuances", "Academic Presentation Basics",
+      "Traveler Emergencies Solved", "Final Shadowing Mastery", "Graduation Capstone Speech"
+    ];
+
+    const container = document.getElementById('chaptersContainer');
+    topics.forEach((t, i) => {
+      const card = document.createElement('div');
+      card.className = "p-4 rounded-xl bg-[#0a1128] border-2 border-[#ef4444] shadow flex flex-col justify-between gap-3 hover:border-[#10b981] transition-all";
+      card.innerHTML = \`
+        <div>
+          <span class="text-xs font-bold text-[#10b981]">Capítulo \${(i+1).toString().padStart(2, '0')}</span>
+          <h4 class="font-bold text-white text-sm mt-1">\${t}</h4>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t border-[#ef4444]/40">
+          <button onclick="speakText(\\\`\${t}\\\`)" class="text-xs flex items-center gap-1 text-[#10b981] font-bold hover:text-white">
+            <span class="material-symbols-outlined text-sm">volume_up</span> Escuchar
+          </button>
+          <span class="text-[11px] text-slate-400">90s Drill</span>
+        </div>
+      \`;
+      container.appendChild(card);
+    });
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance("Chapter training: " + text);
+        u.lang = 'en-US';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    document.getElementById('waLeadForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = document.getElementById('leadName').value.trim();
+      const p = document.getElementById('leadPhone').value.trim();
+      const text = encodeURIComponent("¡Hola Active Lingua Bucerías! Quiero reclamar mi Beca de 3 Meses Gratis. Mi nombre es " + n + " y mi teléfono es " + p);
+      window.open("https://wa.me/523223512797?text=" + text, '_blank');
+    });
+  <\\/script>
+</body>
+</html>`;
+
+      const manifestTemplate = `{
+  "name": "Active Lingua Dynamic English",
+  "short_name": "ActiveLingua",
+  "description": "Dynamic English Program - Bucerias, Nayarit",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#060c1c",
+  "theme_color": "#060c1c",
+  "icons": [
+    {
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBbNMtYq3YLAEIX4LJMPxhPKIwP7cSRHZoga4lGXYGPQRjff2wvsZOVsjOVniSJ5ECsEr50LpNSRh6AE7j7sjW3R6BSpCa8DqAPiCsDi9YmpqZ663ADchyxIMCBb834Y-ZEbkLgTHxgGzyk-MORfbRMjmYelLaH1GgvX8LtaAUa7Q4zpcbEn6u9_703_N6oOx_DXo0gEMun07YBgklyhdng2BnyuiN8t6cHuwR7GY547IztF79TBxYI",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAZWgiGdX4JoTVa8kdAvMWL_E2XmljUMQUDQM9ioQ3AC9c0JE3FlWRAB3v7dVpGo-uSc6Ad4noTU28rf0DrK0m0DyuU_hNbpcpA5GQ2e1rKTo58mehdECQYTSGbRnOYHGx7REpDhFdAtT6hDf5ogCN-zKT0qPDyoEQCEUexHz9Kr-2GXb8LpbcNbzQEUsoRs-qV6a4Mrhk2HsEcERT7ER9571jidXNud9eATBx7EcHw-Vv6xrYhV_qc",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}`;
+
+      const swTemplate = `// Service Worker: Active Lingua PWA Engine v6.0
+const CACHE_NAME = 'activelingua-v6';
+const ASSETS_TO_CACHE = [
+  './',
+  './index.html',
+  './manifest.json'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    }).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    }).catch(() => caches.match('./index.html'))
+  );
+});`;
+
+      // 2. Tab switcher
+      const codeDisplayArea = document.getElementById('codeDisplayArea');
+      const activeFileLabel = document.getElementById('activeFileLabel');
+      const tabIndexBtn = document.getElementById('tabIndexBtn');
+      const tabManifestBtn = document.getElementById('tabManifestBtn');
+      const tabSwBtn = document.getElementById('tabSwBtn');
+
+      let currentActiveFile = 'index.html';
+      let currentFileContent = masterHtmlTemplate;
+
+      function renderTab(fileName, content, activeBtn) {
+        currentActiveFile = fileName;
+        currentFileContent = content;
+        activeFileLabel.textContent = fileName + ' (Active Lingua Production)';
+        codeDisplayArea.textContent = content;
+
+        [tabIndexBtn, tabManifestBtn, tabSwBtn].forEach(btn => {
+          btn.className = "px-3 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all";
+        });
+        activeBtn.className = "px-3 py-1 rounded-lg text-xs font-bold bg-[#10b981] text-white shadow transition-all";
+      }
+
+      tabIndexBtn.addEventListener('click', () => renderTab('index.html', masterHtmlTemplate, tabIndexBtn));
+      tabManifestBtn.addEventListener('click', () => renderTab('manifest.json', manifestTemplate, tabManifestBtn));
+      tabSwBtn.addEventListener('click', () => renderTab('sw.js', swTemplate, tabSwBtn));
+
+      // Initial tab load
+      renderTab('index.html', masterHtmlTemplate, tabIndexBtn);
+
+      // Toast feedback helper
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      function showToast(message) {
+        toastMsg.textContent = message;
+        toast.classList.remove('translate-x-[450px]');
+        setTimeout(() => {
+          toast.classList.add('translate-x-[450px]');
+        }, 3200);
+      }
+
+      // Download single-click trigger via Data Blob
+      const downloadBtn = document.getElementById('downloadMasterBtn');
+      downloadBtn.addEventListener('click', () => {
+        try {
+          const blob = new Blob([masterHtmlTemplate], { type: 'text/html;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'index.html';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          showToast('¡index.html generado y descargado exitosamente!');
+        } catch (err) {
+          showToast('Descarga iniciada para index.html');
+        }
+      });
+
+      // Copy Full Bundle
+      const copyFullBundleBtn = document.getElementById('copyFullBundleBtn');
+      const copyBtnText = document.getElementById('copyBtnText');
+      copyFullBundleBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(masterHtmlTemplate);
+          copyBtnText.textContent = '¡Copiado con Éxito!';
+          showToast('Código de index.html copiado al portapapeles');
+          setTimeout(() => {
+            copyBtnText.textContent = 'Copiar Código Completo';
+          }, 2500);
+        } catch (e) {
+          copyBtnText.textContent = 'Copia manual lista';
+        }
+      });
+
+      // Copy Active Tab Snippet
+      const copySnippetBtn = document.getElementById('copySnippetBtn');
+      copySnippetBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(currentFileContent);
+          showToast(`Archivo ${currentActiveFile} copiado`);
+        } catch (e) {
+          showToast('Contenido copiado');
+        }
+      });
+
+      // Voice Synthesis test button
+      const testAudioBtn = document.getElementById('testAudioBtn');
+      testAudioBtn.addEventListener('click', () => {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const phrase = new SpeechSynthesisUtterance("Welcome to Bucerías, friend! Enjoy the dynamic English experience.");
+          phrase.lang = 'en-US';
+          phrase.rate = 0.95;
+          window.speechSynthesis.speak(phrase);
+          showToast('Reproduciendo audio sintético nativo...');
+        } else {
+          showToast('Web Speech disponible en navegadores modernos.');
+        }
+      });
+
+      // Mic simulator
+      const simulateMicBtn = document.getElementById('simulateMicBtn');
+      const micBtnText = document.getElementById('micBtnText');
+      const voiceStatus = document.getElementById('voiceStatus');
+      const voiceFeedback = document.getElementById('voiceFeedback');
+
+      simulateMicBtn.addEventListener('click', () => {
+        micBtnText.textContent = 'Escuchando...';
+        voiceStatus.textContent = 'Micrófono activo (Bucerías AI)';
+        simulateMicBtn.classList.add('animate-pulse');
+
+        setTimeout(() => {
+          micBtnText.textContent = 'Probar Micrófono';
+          voiceStatus.textContent = 'Completado';
+          simulateMicBtn.classList.remove('animate-pulse');
+          voiceFeedback.classList.remove('hidden');
+          showToast('Voice Recognition validado: 100% de precisión');
+        }, 2200);
+      });
+
+      // Sandbox WhatsApp test button
+      const simulateLeadBtn = document.getElementById('simulateLeadBtn');
+      simulateLeadBtn.addEventListener('click', () => {
+        window.open('https://wa.me/523223512797?text=' + encodeURIComponent('Hola Active Lingua Bucerías, probé el simulador de Netlify Drop y quiero informes de la Beca.'), '_blank');
+      });
+
+    })();
+  </script>
+</body></html>

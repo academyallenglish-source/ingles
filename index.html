@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/>
+<style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><title>Active Lingua · Centro PWA</title><meta content="#162d6e" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><meta content="Active Lingua" name="apple-mobile-web-app-title"/><meta content="Centro de instalación y distribución PWA de Active Lingua." name="description"/><link href="./manifest.json" rel="manifest"/><link href="./assets/icon-180.png" rel="apple-touch-icon"/><link href="./assets/icon-192.png" rel="icon"/><link href="./assets/fonts.css" rel="stylesheet"/><link href="./assets/app.css" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-[0_2px_8px_rgba(0,23,81,0.15)]"><span class="material-symbols-outlined text-[20px]">translate</span></div><div class="flex flex-col"><span class="font-label-lg text-label-lg tracking-tight text-primary leading-none">Active Lingua</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-0.5">Contenido</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed shadow-[0_2px_0_#d97e00]"><span class="material-symbols-outlined text-[16px] text-on-tertiary-fixed">bolt</span><span class="font-label-md text-label-md leading-none">Centro PWA</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Toast Notification System -->
+<div class="fixed top-20 left-4 right-4 z-50 transform -translate-y-28 opacity-0 transition-all duration-300 pointer-events-none flex items-center justify-between p-3.5 rounded-xl bg-primary text-on-primary shadow-xl" id="toast-notification" role="status">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">check_circle</span>
+<span class="font-label-md text-label-md" id="toast-message">Copiado al portapapeles</span>
+</div>
+<span class="material-symbols-outlined text-[16px] opacity-70">done_all</span>
+</div>
+<!-- Hero Status & Production Badge -->
+<div class="px-gutter pt-3 pb-4">
+<div class="p-5 rounded-2xl bg-surface-container shadow-sm flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-36 h-36 rounded-full bg-primary/5 pointer-events-none"></div>
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm tracking-wide shadow-sm uppercase">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+          ACTIVE LINGUA · CENTRO PWA
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-highest text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+          Pantalla offline
+        </span>
+</div>
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Centro de Empaquetado PWA</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Despliega Active Lingua como aplicación web nativa para Android y iOS sin tiendas de apps.</p>
+</div>
+<!-- Quick Health Metrics -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="p-2.5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Auditoría</span>
+<span class="font-title-md text-title-md text-secondary mt-0.5">Pendiente</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Recursos</span>
+<span class="font-title-md text-title-md text-primary mt-0.5">Locales</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Contenido</span>
+<span class="font-title-md text-title-md text-tertiary-container mt-0.5">Centro PWA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Instant Download Action Card -->
+<section class="px-gutter mb-5"><div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm"><h2 class="font-headline-sm text-primary">Instalar en este dispositivo</h2><p aria-live="polite" class="text-body-sm my-3" id="pwa-status" role="status">Preparando disponibilidad sin conexión…</p><button class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-label-lg" id="install-app">Instalar Active Lingua</button><p class="text-body-sm mt-3" id="install-help">Android/Chrome: menú → Instalar aplicación. iPhone/iPad: Safari → Compartir → Añadir a pantalla de inicio.</p><p class="text-body-sm mt-3">Este paquete instala el centro PWA. No contiene capítulos, prácticas ni tutor IA.</p></div></section><div class="px-gutter mb-5">
+<div class="p-4 rounded-2xl bg-surface-container-low shadow-sm flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">inventory_2</span>
+<span class="font-headline-sm text-headline-sm text-primary">Descarga Inmediata</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 rounded bg-surface-container">Zero Backend</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Descarga el ZIP real con HTML, estilos, fuentes, iconos, manifiesto y service worker. Listo para publicar en un alojamiento HTTPS.
+      </p>
+<button class="w-full py-3.5 px-4 rounded-xl bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[0_4px_0_#00530c] active:translate-y-0.5 active:shadow-[0_2px_0_#00530c] transition-all" id="btn-download-bundle" onclick="handleBundleDownload()">
+<span class="material-symbols-outlined text-[20px]" id="download-icon">download</span>
+<span id="download-label">Descargar paquete PWA completo (.ZIP)</span>
+</button>
+<div class="hidden flex-col gap-1.5 pt-1" id="download-progress-bar">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span id="download-status-text">Generando index.html y assets...</span>
+<span id="download-percent">0%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-300 w-0" id="download-progress-fill"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Files Manifest Breakdown -->
+<div class="px-gutter mb-6">
+<div class="flex items-center justify-between mb-2.5">
+<h2 class="font-headline-sm text-headline-sm text-primary">Archivos Empaquetados</h2>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Verificados
+      </span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- File 1: index.html -->
+<div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">html</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary truncate">index.html</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">HTML</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">
+            Centro de empaquetado e instalación. El archivo original no incluye lecciones ni tutor IA.
+          </p>
+</div>
+</div>
+<!-- File 2: manifest.json -->
+<div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">data_object</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary truncate">manifest.json</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">JSON</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">
+            Configuración nativa de iconos, modo display standalone pantalla completa y color institucional #162d6e.
+          </p>
+</div>
+</div>
+<!-- File 3: sw.js -->
+<div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">cached</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary truncate">sw.js (Service Worker)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">JS</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">
+            Caché local para abrir esta pantalla sin conexión después de una primera carga completa.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Code Inspector Tabs -->
+<div class="px-gutter mb-6">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-sm text-headline-sm text-primary">Inspeccionar Código</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Click para copiar</span>
+</div>
+<!-- Tab Buttons -->
+<div class="flex gap-1.5 p-1 rounded-xl bg-surface-container-high mb-3 overflow-x-auto">
+<button class="flex-1 min-w-[100px] py-2 px-2.5 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all text-center" id="tab-btn-manifest" onclick="switchTab('manifest')">
+        manifest.json
+      </button>
+<button class="flex-1 min-w-[100px] py-2 px-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all text-center" id="tab-btn-sw" onclick="switchTab('sw')">
+        sw.js
+      </button>
+<button class="flex-1 min-w-[100px] py-2 px-2.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all text-center" id="tab-btn-guide" onclick="switchTab('guide')">
+        Guía Rápida
+      </button>
+</div>
+<!-- Tab 1: manifest.json Viewer -->
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-3" id="tab-content-manifest">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">manifest.json</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm flex items-center gap-1 hover:bg-surface-container-high transition-colors" onclick="copySnippet('code-manifest', 'manifest.json copiado')">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+          Copiar Código
+        </button>
+</div>
+<pre class="p-3.5 rounded-xl bg-primary text-primary-fixed font-mono text-[12px] leading-relaxed overflow-x-auto select-all max-h-56" id="code-manifest">{
+  "id": "./",
+  "name": "Active Lingua · Centro PWA",
+  "short_name": "Active Lingua",
+  "lang": "es",
+  "description": "Centro de instalación y distribución PWA de Active Lingua.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fcf9f4",
+  "theme_color": "#162d6e",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}</pre>
+</div>
+<!-- Tab 2: sw.js Viewer -->
+<div class="hidden p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-3" id="tab-content-sw">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">sw.js</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm flex items-center gap-1 hover:bg-surface-container-high transition-colors" onclick="copySnippet('code-sw', 'sw.js copiado')">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+          Copiar Código
+        </button>
+</div>
+<pre class="p-3.5 rounded-xl bg-primary text-primary-fixed font-mono text-[12px] leading-relaxed overflow-x-auto select-all max-h-56" id="code-sw">'use strict';
+const CACHE='active-lingua-3276bf36422e-'+self.registration.scope;
+const PREFIX='active-lingua-';
+const FILES=["./LEEME.txt", "./LICENCIAS.txt", "./assets/app.css", "./assets/app.js", "./assets/brand-0.png", "./assets/brand-1.png", "./assets/font-0ee86126fb55.ttf", "./assets/font-160517eddbca.ttf", "./assets/font-43adbc7c773e.ttf", "./assets/font-722d54da3dbf.ttf", "./assets/font-9c0e6cce7702.ttf", "./assets/font-cbf4f5937e04.ttf", "./assets/font-d0e154fa8a11.ttf", "./assets/font-ef22c232bb39.ttf", "./assets/font-f3fb6e3aeb1b.ttf", "./assets/font-f7edf71d76fb.ttf", "./assets/font-febcd075c3e4.ttf", "./assets/fonts.css", "./assets/icon-180.png", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/qrcode.js", "./bundle-info.json", "./index.html", "./manifest.json"];
+self.addEventListener('install',event=&gt;event.waitUntil(caches.open(CACHE).then(cache=&gt;cache.addAll(FILES))));
+self.addEventListener('activate',event=&gt;event.waitUntil((async()=&gt;{
+  for(const name of await caches.keys())if(name.startsWith(PREFIX)&amp;&amp;name.endsWith('-'+self.registration.scope)&amp;&amp;name!==CACHE)await caches.delete(name);
+  await self.clients.claim();
+})()));
+self.addEventListener('fetch',event=&gt;{
+  const url=new URL(event.request.url);
+  if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.href.startsWith(self.registration.scope)||url.pathname.endsWith('.zip'))return;
+  event.respondWith((async()=&gt;{
+    const cache=await caches.open(CACHE);
+    if(event.request.mode==='navigate'){
+      try{return await fetch(event.request);}catch(error){return (await cache.match(new URL('./index.html',self.registration.scope)))||Response.error();}
+    }
+    const cached=await cache.match(event.request,{ignoreSearch:true});
+    if(cached)return cached;
+    return fetch(event.request);
+  })());
+});
+</pre>
+</div>
+<!-- Tab 3: Deployment Guide -->
+<div class="hidden p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-3" id="tab-content-guide">
+<div class="flex items-center gap-2 text-primary font-title-md text-title-md">
+<span class="material-symbols-outlined text-secondary">rocket_launch</span>
+        Publicación e instalación
+      </div>
+<div class="flex flex-col gap-2.5 pt-1">
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0">1</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Crea un Repositorio</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Extrae el ZIP y publica todo su contenido, incluida la carpeta assets, en GitHub Pages, Netlify o Vercel.</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0">2</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Habilita HTTPS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">GitHub Pages y Vercel incluyen certificado SSL automático indispensable para instalar PWAs.</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0">3</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">¡Instala y Comparte!</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Abre el enlace en Safari o Chrome y presiona "Agregar a la pantalla de inicio".</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Instant Sharing Hub with QR & WhatsApp -->
+<div class="px-gutter mb-6">
+<div class="p-5 rounded-2xl bg-surface-container shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Compartir con Alumnos</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Distribución directa por enlace o código QR presencial</p>
+</div>
+<span class="material-symbols-outlined text-[26px] text-secondary">share</span>
+</div>
+<!-- QR & Scan Card -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<!-- SVG Generated QR Graphic for Active Lingua -->
+<div class="w-24 h-24 p-1.5 rounded-lg bg-surface-container-lowest shadow-inner shrink-0 flex items-center justify-center">
+<canvas aria-label="Código QR de la URL actual" id="share-qr" role="img" style="width:100%;height:auto"></canvas>
+</div>
+<div class="flex flex-col justify-center">
+<span class="font-label-md text-label-md text-primary">Compartir esta PWA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Apunta con la cámara de tu móvil para abrir el paquete de estudio.</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Enlace de esta publicación
+          </span>
+</div>
+</div>
+<!-- WhatsApp Direct Action -->
+<a aria-label="Compartir la URL publicada por WhatsApp" class="w-full py-3 px-4 rounded-xl bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[0_4px_0_#00530c] active:translate-y-0.5 active:shadow-[0_2px_0_#00530c] transition-all" href="#" id="share-whatsapp" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+        Compartir Enlace por WhatsApp (+52 322 351 2797)
+      </a>
+</div>
+</div>
+<!-- Institutional Brand Identity Banner (Gecko Mascot & Crest) -->
+<div class="px-gutter mb-4">
+<div class="p-5 rounded-2xl bg-primary text-on-primary shadow-md relative overflow-hidden flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Institutional Logo Asset IMAGE_156 -->
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest p-1 shadow-sm shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Active Lingua Insignia Oficial" class="w-full h-full object-contain" src="./assets/brand-0.png"/>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-primary">Active Lingua</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">Academia Digital Oficial</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+          Edición 2026
+        </span>
+</div>
+<!-- Mascot Gecko Feature IMAGE_157 -->
+<div class="relative rounded-xl overflow-hidden shadow-inner bg-surface-container-highest">
+<img alt="Mascota Oficial Gecko de Active Lingua" class="w-full h-36 object-cover" src="./assets/brand-1.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent flex flex-col justify-end p-3">
+<span class="font-label-lg text-label-lg text-tertiary-fixed tracking-wide drop-shadow-sm">¡Sé bilingüe o te lo pierdes!</span>
+<span class="font-body-sm text-body-sm text-on-primary/90 text-xs">Mascota oficial de motivación y progreso fonético diario.</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">lock</span>
+<span class="font-label-sm text-label-sm text-on-primary/80">Recursos locales incluidos</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary/60">Bundle listo</span>
+</div>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-bold scale-105"><div class="flex justify-around items-center h-20 px-gutter"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all gap-1" data-path="capitulos" href="#" onclick="event.preventDefault();showToast('Esta sección no está incluida en el archivo original.')"><span class="material-symbols-outlined text-[24px]">auto_stories</span><span class="font-label-sm text-label-sm">Contenido</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all gap-1" data-path="practica" href="#" onclick="event.preventDefault();showToast('Esta sección no está incluida en el archivo original.')"><span class="material-symbols-outlined text-[24px]">fitness_center</span><span class="font-label-sm text-label-sm">Práctica</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all gap-1" data-path="stitch-tv" href="#" onclick="event.preventDefault();showToast('Esta sección no está incluida en el archivo original.')"><span class="material-symbols-outlined text-[24px]">live_tv</span><span class="font-label-sm text-label-sm">Stitch TV</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all gap-1" data-path="perfil" href="#" onclick="event.preventDefault();showToast('Esta sección no está incluida en el archivo original.')"><span class="material-symbols-outlined text-[24px]">person</span><span class="font-label-sm text-label-sm">Perfil</span></a></div></nav><script defer="True" src="./assets/qrcode.js"></script><script defer="True" src="./assets/app.js"></script></body></html>

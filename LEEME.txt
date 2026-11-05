@@ -1,0 +1,42 @@
+ACTIVE LINGUA · PWA INSTALABLE
+
+ALCANCE
+Este paquete convierte en PWA el centro de empaquetado del HTML proporcionado.
+No incluye lecciones, 20 capítulos, prácticas ni tutor IA: no existían en el original.
+No se ha efectuado una auditoría Lighthouse ni se garantiza una puntuación.
+
+PUBLICACIÓN
+1. Extrae el ZIP.
+2. Publica TODOS los archivos extraídos en un alojamiento estático HTTPS.
+   Netlify: arrastra la carpeta extraída al despliegue manual.
+   GitHub Pages: sube los archivos al repositorio y activa Pages.
+   Vercel: publica como sitio estático sin compilación.
+3. Abre la URL pública y espera el mensaje de disponibilidad sin conexión.
+4. Android/Chrome: pulsa Instalar o usa el menú del navegador.
+   iPhone/iPad/Safari: Compartir > Añadir a pantalla de inicio.
+
+No abras index.html con doble clic para instalar. file:// no activa el service worker.
+Las rutas relativas permiten usar el paquete en la raíz o en una subcarpeta.
+El código QR y WhatsApp utilizan la URL donde publiques la aplicación.
+No compartas un QR generado en localhost: solo funciona en tu equipo.
+
+OFFLINE
+Después de la primera carga completa se guardan HTML, CSS, fuentes, imágenes,
+iconos y código. WhatsApp, publicar y descargar el ZIP requieren conexión.
+El navegador puede borrar la caché por falta de espacio o por ajustes del usuario.
+No hay backend, sincronización de usuarios ni capítulos añadidos.
+
+DESCARGA DENTRO DE LA APP
+Incluimos active-lingua-pwa.zip para que funcione su botón de descarga.
+Ese ZIP contiene la aplicación pero no otra copia de sí mismo; si redistribuyes
+su contenido y deseas mantener el botón, publica también el ZIP que recibiste.
+
+ACTUALIZACIONES
+Al cambiar archivos modifica la versión CACHE en sw.js. La actualización se
+activará cuando se cierren las pestañas antiguas. No borra cachés de otras apps.
+
+ICONOS Y MARCA
+Los iconos se han adaptado a partir de la insignia referenciada en el HTML,
+sin generar una marca nueva. Se conservan las imágenes originales de referencia.
+Las fuentes locales proceden de Google Fonts. Se incluyen avisos de licencias
+para las bibliotecas QR y Tailwind. Verifica derechos de marca antes de distribuir.
